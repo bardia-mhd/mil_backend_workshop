@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 
 class KeepUser(models.Model):
-    firstname = models.CharField(max_length=100, blank=True, null=True)
-    lastname = models.CharField(max_length=100, blank=True, null=True)
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
 
