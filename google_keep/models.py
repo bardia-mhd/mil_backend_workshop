@@ -16,9 +16,9 @@ class Checkbox(models.Model):
 
 
 class Note(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=True)
-    note = models.CharField(max_length=1000, blank=True, null=True)
+    title = models.CharField(max_length=100)
+    note = models.TextField(max_length=1000, blank=True, null=True)
     deleted = models.BooleanField(default=False)
     archived = models.BooleanField(default=False)
-    user = models.ForeignKey(KeepUser, on_delete=models.CASCADE, related_name='users')
-    # todos = models.ManyToManyField(Checkbox, related_name='todos', null=True)
+    user = models.ForeignKey(KeepUser, on_delete=models.CASCADE, related_name='notes')
+    todos = models.ManyToManyField(Checkbox, related_name='todos', null=True, blank=True)
