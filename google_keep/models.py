@@ -9,6 +9,13 @@ class KeepUser(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
 
+    @property
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name
+
+    def __str__(self):
+        return self.full_name
+
 
 class Checkbox(models.Model):
     done = models.BooleanField(default=False)
