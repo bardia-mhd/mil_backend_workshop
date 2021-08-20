@@ -4,10 +4,11 @@ from django.db import models
 # Create your models here.
 
 class KeepUser(models.Model):
-    first_name = models.CharField(max_length=100, blank=True, null=True)
-    last_name = models.CharField(max_length=100, blank=True, null=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='نام')
+    last_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='نام خانوادگی')
+    email = models.EmailField(unique=True, verbose_name='ایمیل')
+    password = models.CharField(max_length=100, verbose_name='رمز')
+    is_active = models.BooleanField(default=True, verbose_name='فعال است؟')
 
     @property
     def full_name(self):
@@ -15,6 +16,10 @@ class KeepUser(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = 'جا کاربری'
+        verbose_name_plural = 'جا کاربری ها'
 
 
 class Checkbox(models.Model):
